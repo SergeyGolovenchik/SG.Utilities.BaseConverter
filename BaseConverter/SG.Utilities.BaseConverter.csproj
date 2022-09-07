@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Sergey Golovenchik</Authors>
+    <RootNamespace>SG.Utilities</RootNamespace>
+    <Description>This library promotes BaseConverter class that allows you to convert Int64 values into desired base(radix) using some universal or your own alphabet.</Description>
+  </PropertyGroup>
+
+</Project>
