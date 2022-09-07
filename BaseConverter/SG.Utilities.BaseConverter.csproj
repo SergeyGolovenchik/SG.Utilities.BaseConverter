@@ -8,6 +8,16 @@
     <Authors>Sergey Golovenchik</Authors>
     <RootNamespace>SG.Utilities</RootNamespace>
     <Description>This library promotes BaseConverter class that allows you to convert Int64 values into desired base(radix) using some universal or your own alphabet.</Description>
+    <PackageProjectUrl>https://github.com/SergeyGolovenchik/SG.Utilities.BaseConverter</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SergeyGolovenchik/SG.Utilities.BaseConverter</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

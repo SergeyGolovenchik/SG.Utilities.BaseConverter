@@ -2,7 +2,7 @@
 
 /// <summary>
 /// This class uses to override BaseConverter logic to fallback 
-/// to Convert class in cases of Base2, Base8 and Base16
+/// to System.Convert class in cases of Base2, Base8 and Base16
 /// </summary>
 public abstract class FrameworkBaseConverter : BaseConverter
 {
