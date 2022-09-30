@@ -78,17 +78,38 @@ public class BaseConverter : IBaseConverter
     /// </summary>
     /// <param name="value"></param>
     /// <returns>Number in decimal base</returns>
+    /// <exception cref="OverflowException">Value was exceeded Int64 range</exception>
     public virtual long ConvertToDec(string value)
     {
-        var result = (ulong)0;                                      // Type conversion to properly convert negative values
-        var valueLength = value.Length;                             // Calculating string length for usage below
+        ulong result = 0;                                           // Type conversion to properly convert negative values
+        var val = value.TrimStart(Alphabet[0]);                     // Trimming leading non-meaning zeros, so "000000101" into "101"
+        var valueLength = val.Length;                               // Calculating string length for usage below
+        if (valueLength == 0)
+        {
+            return 0;
+        }
+
+        bool overflowPossible = valueLength >= _bufferSize;
 
         for (int i = 0; i < valueLength; i++)
         {
             var poweredIndex = (ulong)Math.Pow(this.Base, i);       // Powering base
-            var valueChar = value[valueLength - (i + 1)];           // Getting char to get it's value from alphabet dictionary
+            var valueChar = val[valueLength - (i + 1)];             // Getting char to get it's value from alphabet dictionary
 
-            result += poweredIndex * _alphabet[valueChar];          // Sum the result
+            if (overflowPossible)                                   // Check only when overflow is possible
+            {
+                checked
+                {
+                    result += poweredIndex * _alphabet[valueChar];  // Sum the result
+                }
+            } 
+            else
+            {
+                unchecked
+                {
+                    result += poweredIndex * _alphabet[valueChar];  // Sum the result
+                }
+            }
         }
 
         return (long)result;                                        // Back conversion to support negative values
