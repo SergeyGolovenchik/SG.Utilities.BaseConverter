@@ -27,9 +27,9 @@ public class BaseConverter : IBaseConverter
     /// <exception cref="ArgumentException">Alphabet should contain only unique characters</exception>
     public BaseConverter(string alphabet)
     {
-        if (alphabet is null || alphabet.Length < 2)
+        if (alphabet is null || alphabet.Length < 2 || alphabet.Length > 255)
         {
-            throw new ArgumentOutOfRangeException(message: "Alphabet must contain at least 2 characters", paramName: "alphabet");
+            throw new ArgumentOutOfRangeException(message: "Alphabet must contain at least 2 characters and 255 maximum", paramName: "alphabet");
         }
 
         this.Alphabet = alphabet;
@@ -93,21 +93,22 @@ public class BaseConverter : IBaseConverter
 
         for (int i = 0; i < valueLength; i++)
         {
-            var poweredIndex = (ulong)Math.Pow(this.Base, i);       // Powering base
             var valueChar = val[valueLength - (i + 1)];             // Getting char to get it's value from alphabet dictionary
 
             if (overflowPossible)                                   // Check only when overflow is possible
             {
                 checked
                 {
-                    result += poweredIndex * _alphabet[valueChar];  // Sum the result
+                    var poweredIndex = (ulong)Math.Pow(this.Base, i);       // Powering base
+                    result += poweredIndex * _alphabet[valueChar];          // Sum the result
                 }
             } 
             else
             {
                 unchecked
                 {
-                    result += poweredIndex * _alphabet[valueChar];  // Sum the result
+                    var poweredIndex = (ulong)Math.Pow(this.Base, i);       // Powering base
+                    result += poweredIndex * _alphabet[valueChar];          // Sum the result
                 }
             }
         }
