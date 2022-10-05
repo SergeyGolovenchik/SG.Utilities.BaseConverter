@@ -30,6 +30,7 @@ var fromBase2 = converter.ConvertToDec(inBase2);            // 12345
 #### v1.1
 - **ConvertToDec(string value)** may trigger an OverflowException from now
 - **ConvertToDec(string value)** trims leading zeros before conversion
+- **Code covered with tests
 
 ## License
 MIT

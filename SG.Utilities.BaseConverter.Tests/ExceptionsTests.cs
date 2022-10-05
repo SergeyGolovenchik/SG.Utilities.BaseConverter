@@ -10,10 +10,7 @@ public class ExceptionsTests
     IBaseConverter _converter = null;
 
     [SetUp]
-    public void Setup()
-    {
-
-    }
+    public void Setup() { }
 
     [Test]
     public void ShortAlphabetTest()
@@ -54,7 +51,7 @@ public class ExceptionsTests
         try
         {
             _converter = new BaseConverter(BaseAlphabet.BIN);
-            var value = new string('1', 100);
+            var value = new string('1', 65);
             var converted = _converter.ConvertToDec(value);
         }
         catch (OverflowException)

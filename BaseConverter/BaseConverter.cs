@@ -17,7 +17,7 @@ public class BaseConverter : IBaseConverter
     /// <summary>
     /// Alphabet dictionary to count character value
     /// </summary>
-    private readonly Dictionary<char, byte> _alphabet = new Dictionary<char, byte>();
+    private readonly IDictionary<char, byte> _alphabet = new Dictionary<char, byte>();
 
     /// <summary>
     /// Creates base converter with custom alphabet
