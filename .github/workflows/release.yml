@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: dotnet build -c Release
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal
     - name: Auth to GitHub Packages
       run: dotnet nuget add source --username ${{secrets.NUGETUSERNAME}} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{secrets.NUGETUSERNAME}}/index.json"
     - name: Push to NuGet
